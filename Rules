@@ -1,13 +1,24 @@
 #!/usr/bin/env ruby
+require 'date'
 
 compile '/index.html' do
-  layout '/default.*'
-  write '/index.html'
+    filter :erb
+    layout '/default.*'
+    write '/index.html'
+end
+
+compile '/posts/**/*.html' do
+    # this will apply the post layout first and then the main ayout
+    layout '/post.*'
+    layout '/default.*'
+
+    path = item.identifier.without_ext.delete_prefix('/posts')
+    write "#{path}/index.html"
 end
 
 compile '/**/*.html' do
-  layout '/default.*'
-  write item.identifier.without_ext + '/index.html'
+    layout '/default.*'
+    write item.identifier.without_ext + '/index.html'
 end
 
 # This is an example rule that matches Markdown (.md) files, and filters them
@@ -21,7 +32,7 @@ end
 #end
 
 compile '/**/*' do
-  write item.identifier.to_s
+    write item.identifier.to_s
 end
 
 layout '/**/*', :erb

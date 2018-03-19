@@ -220,3 +220,25 @@ title: We match the world’s greatest tech talents with the booming IT-industry
 	<a href="#" class="button white cta-button" data-form="recruit">Tell me more!</a>
   </div>
 </section>
+
+<section id="recent-articles" class="section recent-articles-section">
+  <div class="container">
+    <h1 class="section-title">Recent articles</h1>
+    
+    <div class="recent-articles">
+
+      <% sorted_articles()[0..1].each do |article| %>
+      <article class="article article-teaser">
+        <img src="<%= article[:front_image] %>" alt="<%= article[:title] %>" class="article-image">
+        <h2 class="article-title"><%= article[:title] %></h2>
+        <div class="article-text"><%= article[:teaser] %></div>
+        <% path = "#{article.identifier.without_ext.delete_prefix('/posts')}" %>
+        <a href="<%= path %>" class="button small red article-button">Read more</a>
+      </article>
+      <% end %>
+
+    </div>
+    
+    <a href="http://goseetalents.com/archive/" class="button recent-articles-button">See more</a>
+  </div>
+</section>
