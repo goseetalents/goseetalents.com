@@ -1,8 +1,8 @@
 
 ;(function($){
-    $('.menu-item').click(function(event){
+    $('.menu-item a, .masthead-cta a').click(function(event){
         event.preventDefault()
-        var targetUrl = $(this).children().attr('href')
+        var targetUrl = $(this).attr('href')
         var scrollToId = targetUrl.split('/').pop()
         var offset = $(scrollToId).offset().top
 
