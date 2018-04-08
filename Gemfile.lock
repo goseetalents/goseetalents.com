@@ -16,6 +16,7 @@ GEM
     ddplugin (1.0.1)
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
+    mustermann (1.0.2)
     nanoc (4.9.1)
       addressable (~> 2.5)
       cri (~> 2.8)
@@ -29,8 +30,16 @@ GEM
     parallel (1.12.1)
     public_suffix (3.0.2)
     rack (2.0.4)
+    rack-protection (2.0.1)
+      rack
     ref (2.0.0)
+    sinatra (2.0.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.1)
+      tilt (~> 2.0)
     slow_enumerator_tools (1.1.0)
+    tilt (2.0.8)
 
 PLATFORMS
   ruby
@@ -38,6 +47,7 @@ PLATFORMS
 DEPENDENCIES
   adsf
   nanoc
+  sinatra
 
 BUNDLED WITH
    1.16.1
